@@ -20,9 +20,10 @@ import GridFour from "./pages/mui-grid/GridFour.jsx";
 import GridFive from "./pages/mui-grid/GridFive.jsx";
 import GridSix from "./pages/mui-grid/GridSix.jsx";
 import GridSeven from "./pages/mui-grid/GridSeven.jsx";
+import GridEight from "./pages/mui-grid/GridEight.jsx";
 
 const router = createBrowserRouter([
-  {
+  /* {
     path: "/",
     element: <SignUp />,
   },
@@ -61,21 +62,23 @@ const router = createBrowserRouter([
   {
     path: "/mui-grid-five",
     element: <GridFive /> ,
-  },
+  }, */
   {
-    path: "/mui-grid-six",
+    path: "/",
     element: <GridSix /> ,
   },
-  {
+  /* {
     path: "/mui-grid-seven",
     element: <GridSeven /> ,
   },
+  {
+    path: "/mui-grid-eight",
+    element:  <GridEight />,
+  }, */
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
-  </React.StrictMode>
 );

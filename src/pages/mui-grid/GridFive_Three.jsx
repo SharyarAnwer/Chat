@@ -8,7 +8,7 @@ import {
 
 export default function GridFive_Three({ row , column }) {
   return (
-    <div style={{ width: "100%" }}>
+    <div className="grid-five-three" style={{ width: "100%" }}>
       <div style={{ height: 350, width: "100%" }}>
         <DataGridPremium
           {...row}
@@ -17,6 +17,7 @@ export default function GridFive_Three({ row , column }) {
               model: [""],
             },
           }}
+          disableVirtualization
         />
       </div>
     </div>

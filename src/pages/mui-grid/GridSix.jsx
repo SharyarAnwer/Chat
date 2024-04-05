@@ -10,6 +10,7 @@ import gridFive from "./GridFiveData";
 import "./GridSix.css";
 import GridSix_One from "./GridSix_One";
 import { renderEditRating } from "@mui/x-data-grid-generator";
+import GridEight from "./GridEight";
 
 export default function GridSix() {
   const apiRef = useGridApiRef();
@@ -17,9 +18,9 @@ export default function GridSix() {
   const initialState = useKeepGroupedColumnsHidden({
     apiRef,
     initialState: {
-      /* rowGrouping: {
-        model: ["account", "symbol"],
-      }, */
+      rowGrouping: {
+        model: ["account" , "symbol"],
+      },
       aggregation: {
         model: {
           quantity: "sum",
@@ -35,17 +36,17 @@ export default function GridSix() {
     },
   });
 
-  const getDetailPanelContent = React.useCallback(
-    ({ row }) => <GridFive_Three row={row.innerData} />,
-    []
-  );
+  const getDetailPanelContent = React.useCallback(({row}) => {
+    return <GridFive_Three row={row.innerData} />;
+  }, []);
 
-  /* const getDetailPanelContent = React.useCallback(
-    ({ row }) => <GridSix_One row={row.innerData} />,
-    []
-  ); */
+  /* const getDetailPanelContent = React.useCallback((params) => {
+    console.log(params);
 
-/*   const getAggregationValue = React.useCallback(({ row }) => {
+    return <GridFive_Three row={params.row.innerData} />;
+  }, []);
+ */
+  /*   const getAggregationValue = React.useCallback(({ row }) => {
     console.log("row.__meta.isParentGroup");
     console.log(row.__meta.isParentGroup);
     if (row.__meta?.isParentGroup && row.__meta?.depth === 1) {
@@ -72,26 +73,15 @@ export default function GridSix() {
           groupNode.depth === -1 ? null : "inline"
         }
         getDetailPanelContent={getDetailPanelContent}
-        /* slot={{
-          detailPanel: (slotProps) => {
-            console.log(slotProps)
-              return <GridFive_Three row={slotProps.row.innerData} />;
-            }
-          ,
-        }}
-        slotProps={{
+        /* slots={{
+          footer : (params) => getDetailPanelContent(),
+        }} */
+        /*slotProps={{
           detailPanel: {
             row: {
               innerData: gridFive.rows[0], // Example row data, you can replace it with actual data
             },
           },
-        }} */
-        /* onSelectionChange={(newSelection) => {
-          // Handle the selection change here
-          console.log("Selected rows:", newSelection);
-        }} */
-        /* onRowSelectionModelChange={(newSelection) => {
-          console.log(newSelection)
         }} */
       />
     </div>
